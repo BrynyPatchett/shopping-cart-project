@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './routes/root.jsx'
 import RouteError from './routeError.jsx'
 import Product from './components/product/product.jsx'
+import './index.css'
 
 const router = createBrowserRouter([{
   path: "/",
@@ -22,6 +23,7 @@ const router = createBrowserRouter([{
         {
           path: "product/:productID",
           element:<Product/>,
+          errorElement: <p>Sorry, this product does not exist.</p>
         },
         {
           path: "*",

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Navbar from '../components/navbar/navbar';
 import { Outlet } from 'react-router-dom';
+import styles from './root.module.css'
+import logoSplash from './logo_splash.svg'
 
 
 function Root() {
@@ -26,7 +28,7 @@ function Root() {
 
   return (
     <>
-      <h1>Hello WOrld</h1>
+      <header className={styles.header}><img src={logoSplash} alt="" /></header>
       <Navbar navlinks={NavbarLinks}/>
       <div className='main'>
         <Outlet/>

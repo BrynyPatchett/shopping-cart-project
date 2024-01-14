@@ -5,7 +5,7 @@ function Product(){
     let {productID} = useParams();
     console.log(productID);
     if(productID !== '1'){
-        throw Error("Sorry this product does not exist");
+        throw new Error("Sorry this product does not exist");
     }
 return(<>
 <h1>PRODUCT</h1>
