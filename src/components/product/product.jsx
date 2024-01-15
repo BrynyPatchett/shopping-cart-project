@@ -17,7 +17,7 @@ function Product() {
   console.log(productID);
 
   //this will need to be later changed to a look up to see if ID exists in data, throw error if ID not exist
-  if (productID >= "3") {
+  if (productID >= 3) {
     throw new Error("Sorry this product does not exist");
   }
 
