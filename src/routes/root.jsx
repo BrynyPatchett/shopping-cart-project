@@ -22,18 +22,18 @@ function Root() {
     },
     {
       text: "Product broken",
-      path: "product/2"
+      path: "product/3"
     },
   ]
 
   return (
-    <>
+    <div className={styles.root}>
       <header className={styles.header}><img src={logoSplash} alt="" /></header>
       <Navbar navlinks={NavbarLinks}/>
       <div className='main'>
         <Outlet/>
       </div>
-    </>
+    </div>
   )
 }
 
