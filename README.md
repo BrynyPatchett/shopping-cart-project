@@ -1,2 +1,2 @@
 # shopping-cart-project
-A mock webstore site made with react
+A mock webstore SPA made with react
