@@ -30,7 +30,7 @@ function Root() {
     <div className={styles.root}>
       <header className={styles.header}><img src={logoSplash} alt="" /></header>
       <Navbar navlinks={NavbarLinks}/>
-      <div className='main'>
+      <div className={styles.main}>
         <Outlet/>
       </div>
     </div>
