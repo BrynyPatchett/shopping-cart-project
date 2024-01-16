@@ -13,7 +13,7 @@ return(<nav className={styles.navbar}>
             <Link key={i} to={link.path}>{link.text}</Link>
         </div>)
     })}
-</div>
+<div>CART</div></div>
 </nav>)
 
 }

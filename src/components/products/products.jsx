@@ -4,11 +4,12 @@ import productPlaceHolder from "./logo_placeholder.jpg";
 import ProductCard from "./product_card/productcard";
 
 
-function Products(){
+function Products({products}){
 
     const tempArray = [0,1,2,3,4,5,6,7,8,9,10,11];
     console.log(tempArray);
     console.log("hello");
+    console.log(products);
 
     const product = {
         productID:2,
