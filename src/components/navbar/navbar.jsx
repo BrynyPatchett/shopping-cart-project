@@ -2,7 +2,7 @@ import { NavLink} from "react-router-dom";
 import styles from './navbar.module.css'
 import logo from './logo_placeholder.svg'
 
-function Navbar({navlinks}){
+function Navbar({navlinks,cart}){
 
 
 return(<nav className={styles.navbar}>
@@ -15,7 +15,7 @@ return(<nav className={styles.navbar}>
            } to={link.path}>{link.text}</NavLink>}
         </div>)
     })}
-<div>CART</div></div>
+<div><NavLink to='checkout'>CART:{cart.reduce((total,item) => total + item.itemCount,0)}</NavLink></div></div>
 </nav>)
 
 }

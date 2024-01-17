@@ -3,12 +3,17 @@ import Navbar from '../components/navbar/navbar';
 import { Outlet } from 'react-router-dom';
 import styles from './root.module.css'
 import logoSplash from './logo_splash.svg'
-import { useLoaderData } from 'react-router-dom';
+import { useRouteLoaderData } from 'react-router-dom';
 
 
 function Root() {
 
-  const data = useLoaderData();
+  const data = useRouteLoaderData("root");
+  const [cart,setCart] = useState([]);
+
+  useEffect(()=>{
+    console.log(cart);
+  },[cart])
 
 
   const NavbarLinks = [
@@ -26,13 +31,15 @@ function Root() {
     },
   ]
 
+
+
   return (
     <div className={styles.root}>
       <header className={styles.header}><img src={logoSplash} alt="" /></header>
-      <Navbar navlinks={NavbarLinks}/>
-      
+      <Navbar navlinks={NavbarLinks} cart={cart} />
+
       {(data.products && <div className={styles.main}>
-        <Outlet />
+        <Outlet context={[cart,setCart]}/>
       </div>)}
       {(data.error && <div className={styles.main}> {data.error}
       </div>)}
@@ -44,26 +51,33 @@ export default Root;
 
 
 
-export async function loader(){
+export async function loader() {
   try {
     let products = await getProductsData();
-    return {products};
+    return { products };
   } catch (error) {
-    return {error:error.message};
+    return { error: error.message };
   }
- 
+
 }
 
-async function getProductsData (){
-  try{
-    const response = await fetch('https://fakestoreapi.com/products?limit=5');
-    if(!response.ok ){
+async function getProductsData() {
+  try {
+    const response = await fetch('https://fakestoreapi.com/products?limit=13');
+    if (!response.ok) {
       throw new Error(`There was an HTTP error in API response ${response.status}`)
     }
     let data = await response.json();
-    console.log(data);
-    return data;
-  }catch(err){
+    let products = data.map((elem) => (
+      {
+        productID: elem.id,
+        title: elem.title, price: elem.price, description: elem.description,
+        imagesrc:elem.image,
+      }
+    ))
+    console.log(products);
+    return products;
+  } catch (err) {
     // console.log(err.message);
     throw new Error(err.message)
   }

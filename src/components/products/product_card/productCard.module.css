@@ -1,12 +1,12 @@
 .productCard{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
- 
    
     >img{
-        max-height: 200px
+        max-height: 200px;
+        max-width: 200px;
     };
 }
 
@@ -18,5 +18,9 @@
     >h3{
         margin: 10px;
         padding: 0;
+        max-width: 20ch;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }

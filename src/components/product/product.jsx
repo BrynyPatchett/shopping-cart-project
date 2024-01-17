@@ -1,25 +1,20 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { createFactory, useState } from "react";
+import { useOutletContext, useParams,useRouteLoaderData } from "react-router-dom";
 import styles from "./product.module.css";
 import productPlaceHolder from "./logo_placeholder.jpg";
 
 function Product() {
+  const {products} = useRouteLoaderData("root");
+  const [cart,setCart] = useOutletContext();
   const [itemCount, setItemCount] = useState(1);
-  const product = {
-    title: "Placeholder Product",
-    price: 5.99,
-    description:
-      "A great description of this great product, look at it. Isn't it Great?! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione ipsum fugiat eveniet voluptas suscipit, accusantium magnam aperiam earum odio officiis quas amet repellendus. Ex et nesciunt dolorem consequuntur laboriosam adipisci?",
-    imgsrc: productPlaceHolder,
-  };
 
   let { productID } = useParams();
-  console.log(productID);
 
-  //this will need to be later changed to a look up to see if ID exists in data, throw error if ID not exist
-  if (productID >= 3) {
+  const product = products.find((elem)=> (elem.productID === Number(productID)));
+  if (product === undefined){
     throw new Error("Sorry this product does not exist");
   }
+
 
   function incrementCount() {
     setItemCount((itemCount) => itemCount + 1);
@@ -36,7 +31,7 @@ function Product() {
     <h1 className={styles.productTitle}>{product.title}</h1>
       <div className={styles.display}>
         <div className={styles.imageContainer}>
-          <img src={productPlaceHolder} alt="" />
+          <img src={product.imagesrc} alt="" />
         </div>
         <div className={styles.infoContainer}>
             <p>
@@ -50,7 +45,7 @@ function Product() {
         <div>{itemCount}</div>
         <button onClick={incrementCount}> + </button>
       </div>
-      <button className={styles.buttonAddCart} onClick={null}> Add to Cart </button>
+      <button className={styles.buttonAddCart} onClick={() => setCart([...cart,{product,itemCount}])}> Add to Cart </button>
     </div>
     </>
   );

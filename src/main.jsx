@@ -5,6 +5,7 @@ import Root from './routes/root.jsx'
 import RouteError from './routeError.jsx'
 import Product from './components/product/product.jsx'
 import Products from './components/products/products.jsx'
+import Checkout from './components/checkout/checkout.jsx'
 import {  loader as rootLoader } from './routes/root.jsx'
 import './index.css'
 
@@ -13,6 +14,7 @@ const router = createBrowserRouter([{
   element: <Root />,
   errorElement: <RouteError />,
   loader: rootLoader,
+  id: "root",
   children: [
     {
       errorElement: <RouteError />,
@@ -20,7 +22,7 @@ const router = createBrowserRouter([{
         {
           path: "home",
           element: <p>HOMEPAGE</p>,
-          // loader: rootLoader,
+        
         },
         {
           path: "products",
@@ -30,6 +32,10 @@ const router = createBrowserRouter([{
           path: "product/:productID",
           element:<Product/>,
           errorElement: <p>Sorry, this product does not exist.</p>
+        },
+        {
+            path: "checkout",
+            element: <Checkout />
         },
         {
           path: "*",
