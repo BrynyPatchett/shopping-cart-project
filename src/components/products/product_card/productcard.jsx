@@ -9,7 +9,7 @@ function ProductCard({ productId, title, price, imagesrc }) {
         <img src={imagesrc} alt={title} />
         <div className={styles.productInfo}>
             <h3>{title}</h3>
-            <h3>${price}</h3>
+            <h3 className={styles.price}>${price}</h3>
         </div>
       </Link>
     </>
