@@ -25,6 +25,19 @@ function Product() {
     }
   }
 
+  /*If the item already exists in the cart update it, else add it to the cart */
+  function updateCart(){
+    const updateCart = [...cart];
+    const order = updateCart.find(cItem => cItem.product.productID === product.productID);
+    console.log(order)
+    if(order === undefined){
+    setCart([...cart,{product,itemCount}])
+    }else{
+      order.itemCount = order.itemCount + itemCount;
+      setCart(updateCart);
+    }
+  }
+
   return (
     <>
     <div className={styles.product}>
@@ -45,7 +58,7 @@ function Product() {
         <div>{itemCount}</div>
         <button onClick={incrementCount}> + </button>
       </div>
-      <button className={styles.buttonAddCart} onClick={() => setCart([...cart,{product,itemCount}])}> Add to Cart </button>
+      <button className={styles.buttonAddCart} onClick={() => updateCart()}> Add to Cart </button>
     </div>
     </>
   );

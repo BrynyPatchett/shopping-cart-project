@@ -1,0 +1,66 @@
+.checkout{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin:50px;
+}
+
+.checkoutItem{
+    display:flex;
+    justify-content: space-evenly;
+    margin : 10px;
+    padding: 10px;
+    width: 80%;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.itemTitle{
+    width: 30ch;
+    max-width: 30ch;
+    align-self: center;
+    text-align: left;
+}
+
+.itemPrice{
+    text-align: right;
+    align-self: center;
+}
+
+.itemCount{
+    padding: 5px;
+    align-self: center;
+}
+
+.imageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    >img{
+        width: 75px;
+        max-height: 100px; 
+    }
+}
+
+.remove{
+    color: grey;
+    align-self: center;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonContainer{
+
+    >button{
+        font-size: 1.6rem;
+        padding:  10px 50px;
+    }
+}
