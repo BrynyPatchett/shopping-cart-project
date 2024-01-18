@@ -43,6 +43,7 @@ function Root() {
       </div>)}
       {(data.error && <div className={styles.main}> {data.error}
       </div>)}
+      <div className={styles.footer}>Footer</div>
     </div>
   )
 }
