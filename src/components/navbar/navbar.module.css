@@ -32,6 +32,9 @@
 }
 
 .active{
-    background-color: red;
+   background-color: red;
+}
+
+.disable{
     pointer-events: none;
 }

@@ -1,4 +1,4 @@
-import { NavLink} from "react-router-dom";
+import { NavLink,Link} from "react-router-dom";
 import styles from './navbar.module.css'
 import logo from './logo_placeholder.svg'
 
@@ -6,12 +6,13 @@ function Navbar({navlinks,cart}){
 
 
 return(<nav className={styles.navbar}>
-<div className={styles.imageContainer}><img  src={logo}/></div>
+<div className={styles.imageContainer}><NavLink to="/" className={({isActive}) => 
+            isActive ? styles.disable : ""}><img  src={logo}/></NavLink></div>
 <div className={styles.navlinksContainer}>
     {navlinks && navlinks.map((link,i) => {
         return(<div key={i} className={styles.navlink}>
            {<NavLink key={i} className={({isActive}) => 
-            isActive ? styles.active : ""
+            isActive ? `${styles.disable} ${styles.active}` : ""
            } to={link.path}>{link.text}</NavLink>}
         </div>)
     })}
