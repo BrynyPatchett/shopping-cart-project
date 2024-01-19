@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import styles from './root.module.css'
 import logoSplash from './logo_splash.svg'
 import { useRouteLoaderData } from 'react-router-dom';
+import Footer from '../components/footer/footer';
 
 
 function Root() {
@@ -43,7 +44,7 @@ function Root() {
       </div>)}
       {(data.error && <div className={styles.main}> {data.error}
       </div>)}
-      <div className={styles.footer}>Footer</div>
+      <Footer/>
     </div>
   )
 }

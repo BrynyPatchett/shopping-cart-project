@@ -21,15 +21,3 @@
     width: 100%;
 }
 
-.footer{
-    background-color: yellow;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    background-color: yellow;
-    border-top: 1px solid rgb(160, 155, 155);
-    border-bottom: 1px solid black;
-    padding-top: 5px;
-    padding-bottom: 5px;
-
-}
