@@ -8,6 +8,7 @@ function Navbar({navlinks,cart}){
 return(<nav className={styles.navbar}>
 <div className={styles.imageContainer}><NavLink to="/" className={({isActive}) => 
             isActive ? styles.disable : ""}><img  src={logo}/></NavLink></div>
+<div className={styles.navWrapper}>
 <div className={styles.navlinksContainer}>
     {navlinks && navlinks.map((link,i) => {
         return(<div key={i} className={styles.navlink}>
@@ -16,7 +17,9 @@ return(<nav className={styles.navbar}>
            } to={link.path}>{link.text}</NavLink>}
         </div>)
     })}
-<div><NavLink to='checkout'>CART:{cart.reduce((total,item) => total + item.itemCount,0)}</NavLink></div></div>
+    </div>
+<div className={styles.cart} ><NavLink to='checkout'>CART:{cart.reduce((total,item) => total + item.itemCount,0)}</NavLink></div>
+</div>
 </nav>)
 
 }

@@ -26,10 +26,6 @@ function Root() {
       text: "Products",
       path: "products"
     },
-    {
-      text: "Product Fav",
-      path: "product/1"
-    },
   ]
 
 
