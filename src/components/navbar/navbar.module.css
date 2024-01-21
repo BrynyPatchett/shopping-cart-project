@@ -10,6 +10,7 @@
    @media (max-width:468px) {
       justify-content: space-between;
    }
+   z-index: 1;
 }
 
 .imageContainer{
