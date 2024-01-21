@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './routes/root.jsx'
 import RouteError from './routeError.jsx'
+import Homepage from './components/homepage/homepage.jsx'
 import Product from './components/product/product.jsx'
 import Products from './components/products/products.jsx'
 import Checkout from './components/checkout/checkout.jsx'
@@ -21,7 +22,7 @@ const router = createBrowserRouter([{
       children: [
         {
           path: "/",
-          element: <p>HOMEPAGE</p>,
+          element: <Homepage/>,
         
         },
         {
