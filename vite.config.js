@@ -4,15 +4,15 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: {
+  // server: {
 
-    open: "/src/index.html",
+  //   open: "/src/index.html",
     
-    host: true,
+  //   host: true,
     
-    port: 3000,
+  //   port: 3000,
     
-    },
+  //   },
     
   
 })

@@ -1,11 +1,10 @@
 import styles from './hamburger.module.css'
+import closeIcon from './closeIcon.svg'
+import openIcon from './openIcon.svg'
 
-
-function Hamburger() {
-    return (<div className={styles.navMenu}>
-        <span></span>
-        <span></span>
-        <span className={styles.lastSpan}></span>
+function Hamburger({open}) {
+    return (<div className={styles.navMenu + " " +(open?styles.open:"")}>
+       <img src={!open?openIcon:closeIcon}/>
     </div>
     )
 }

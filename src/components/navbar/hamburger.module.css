@@ -1,10 +1,4 @@
-span{
-    display: block;
-    width: 25px;
-    height:5px;
-    border-top: 2px solid #000000;
-    border-radius: 2;
-}
+
 
 .navMenu{
     display: none;
@@ -13,8 +7,6 @@ span{
     gap:2px;
     padding-left: 5px;
     padding-right: 5px;
-    padding-top: 7px;
-    padding-bottom: 2px;
     border: 2px solid #000000;
     border-radius: 5px;
     width: min-content;
@@ -24,5 +16,16 @@ span{
     @media (max-width: 468px) {
         display: flex;
     }
+    >img{
+        width: 30px;
+        height: 30px;
+    }
 }
+
+.navMenu.open{
+    border: none;
+  
+}
+
+
 
