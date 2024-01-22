@@ -61,7 +61,7 @@ export async function loader() {
 
 async function getProductsData() {
   try {
-    const response = await fetch('https://fakestosreapi.com/products?limit=13',{cors: 'no-cors'});
+    const response = await fetch('https://fakestoreapi.com/products?limit=13',{cors: 'cors'});
     if (!response.ok) {
       throw new Error(`There was an HTTP error in API response ${response.status}`)
     }

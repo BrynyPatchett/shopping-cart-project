@@ -1,6 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import styles from "./navbar.module.css";
 import logo from "./logo_placeholder.svg";
+import shoppingCart from "./shoppingcart.svg"
 import Hamburger from "./hamburger";
 import { useState,useEffect,useRef } from "react";
 
@@ -59,11 +60,11 @@ function Navbar({ navlinks, cart }) {
             })}
         </div>
         <div className={styles.cart}>
-          <p>CART: {cart.reduce((total, item) => total + item.itemCount, 0)}</p>
+          <div className={styles.cartContainer}><img className={styles.shoppingCart} src={shoppingCart}/><p className={cart.length > 0 ? "" : styles.noItems}>{cart.reduce((total, item) => total + item.itemCount, 0)}</p></div>
           <div className={styles.cartNav}>
             <div className={styles.cartNavList}>{
                 cart.map((elem)=>{
-                   return <div className={styles.cartnavListItem}>
+                   return <div className={styles.cartnavListItem} key={elem.product.productID}>
                     <div className={styles.navImageContainer}><img src={elem.product.imagesrc}></img></div>
                     <div className={styles.cartnavListItemTitle}><p>{elem.product.title}</p></div>
                     <div>{elem.product.price}</div>
@@ -73,7 +74,7 @@ function Navbar({ navlinks, cart }) {
             </div>
             <div className={styles.cartNavCheckout}>
               <NavLink  className={({ isActive }) =>
-                        styles.checkoutLink + " " + (isActive ? `${styles.disable}` : "")
+                        styles.checkoutLink + " " + (isActive ? `${styles.disable}  ${styles.actived}` : "")
                       }
                       to='checkout'>Checkout</NavLink>
             </div>

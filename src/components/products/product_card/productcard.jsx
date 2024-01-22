@@ -8,8 +8,8 @@ function ProductCard({ productId, title, price, imagesrc }) {
       <Link to={`/product/${productId}`} className={styles.productCard}>
         <img src={imagesrc} alt={title} />
         <div className={styles.productInfo}>
-            <h3>{title}</h3>
-            <h3 className={styles.price}>${price}</h3>
+            <p>{title}</p>
+            <p className={styles.price}>${price}</p>
         </div>
       </Link>
     </>
