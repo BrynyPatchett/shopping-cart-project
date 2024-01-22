@@ -92,6 +92,12 @@
     
 }
 
+.cart:hover .cartNav{
+    display: block;
+    @media (max-width:468px) {
+        display: contents;
+      }
+}
 
 .cartNavList{
     z-index: 1;
@@ -163,7 +169,6 @@
 }
 
 .navWrapper.openMenu{
-
     display: contents;
     @media (max-width:468px) {
         position: absolute;
