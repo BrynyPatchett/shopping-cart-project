@@ -47,7 +47,7 @@ function Navbar({ navlinks, cart }) {
                     <NavLink
                       key={i}
                       className={({ isActive }) =>
-                        isActive ? `${styles.disable} ${styles.active}` : ""
+                        isActive ? `${styles.disable} ${styles.actived}` : ""
                       }
                       to={link.path}
                     >
@@ -58,8 +58,6 @@ function Navbar({ navlinks, cart }) {
               );
             })}
         </div>
-        {/* <div className={styles.cart}><NavLink to='checkout'>CART:{cart.reduce((total,item) => total + item.itemCount,0)}</NavLink>
-</div> */}
         <div className={styles.cart}>
           <p>CART: {cart.reduce((total, item) => total + item.itemCount, 0)}</p>
           <div className={styles.cartNav}>
@@ -74,7 +72,10 @@ function Navbar({ navlinks, cart }) {
             }
             </div>
             <div className={styles.cartNavCheckout}>
-              <NavLink class={styles.checkoutLink}to='checkout'>Checkout</NavLink>
+              <NavLink  className={({ isActive }) =>
+                        styles.checkoutLink + " " + (isActive ? `${styles.disable}` : "")
+                      }
+                      to='checkout'>Checkout</NavLink>
             </div>
           </div>
         </div>
