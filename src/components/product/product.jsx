@@ -1,17 +1,20 @@
 import { createFactory, useState } from "react";
-import { useOutletContext, useParams,useRouteLoaderData } from "react-router-dom";
+import { useOutletContext, useParams, useRouteLoaderData } from "react-router-dom";
 import styles from "./product.module.css";
 import productPlaceHolder from "./logo_placeholder.jpg";
 
 function Product() {
-  const {products} = useRouteLoaderData("root");
-  const [cart,setCart] = useOutletContext();
+  // const {products} = useRouteLoaderData("root");
+  const {
+    cart: [cart,setCart],
+    products
+  } = useOutletContext();
   const [itemCount, setItemCount] = useState(1);
 
   let { productID } = useParams();
 
-  const product = products.find((elem)=> (elem.productID === Number(productID)));
-  if (product === undefined){
+  const product = products[0].find((elem) => (elem.productID === Number(productID)));
+  if (product === undefined) {
     throw new Error("Sorry this product does not exist");
   }
 
@@ -26,13 +29,13 @@ function Product() {
   }
 
   /*If the item already exists in the cart update it, else add it to the cart */
-  function updateCart(){
+  function updateCart() {
     const updateCart = [...cart];
     const order = updateCart.find(cItem => cItem.product.productID === product.productID);
     console.log(order)
-    if(order === undefined){
-    setCart([...cart,{product,itemCount}])
-    }else{
+    if (order === undefined) {
+      setCart([...cart, { product, itemCount }])
+    } else {
       order.itemCount = order.itemCount + itemCount;
       setCart(updateCart);
     }
@@ -40,26 +43,26 @@ function Product() {
 
   return (
     <>
-    <div className={styles.product}>
-    <h1 className={styles.productTitle}>{product.title}</h1>
-      <div className={styles.display}>
-        <div className={styles.imageContainer}>
-          <img src={product.imagesrc} alt="" />
-        </div>
-        <div className={styles.infoContainer}>
+      <div className={styles.product}>
+        <h1 className={styles.productTitle}>{product.title}</h1>
+        <div className={styles.display}>
+          <div className={styles.imageContainer}>
+            <img src={product.imagesrc} alt="" />
+          </div>
+          <div className={styles.infoContainer}>
             <p>
               {product.description}
             </p>
             <div className={styles.priceContainer}><h2>Price</h2><h2>{'$' + (product.price * itemCount).toFixed(2)}</h2></div>
+          </div>
         </div>
+        <div className={styles.orderNumber}>
+          <button onClick={decrementCount}> - </button>
+          <div>{itemCount}</div>
+          <button onClick={incrementCount}> + </button>
+        </div>
+        <button className={styles.buttonAddCart} onClick={() => updateCart()}> Add to Cart </button>
       </div>
-      <div className={styles.orderNumber}>
-        <button onClick={decrementCount}> - </button>
-        <div>{itemCount}</div>
-        <button onClick={incrementCount}> + </button>
-      </div>
-      <button className={styles.buttonAddCart} onClick={() => updateCart()}> Add to Cart </button>
-    </div>
     </>
   );
 }

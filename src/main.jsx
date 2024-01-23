@@ -7,15 +7,13 @@ import Homepage from './components/homepage/homepage.jsx'
 import Product from './components/product/product.jsx'
 import Products from './components/products/products.jsx'
 import Checkout from './components/checkout/checkout.jsx'
-import {  loader as rootLoader } from './routes/root.jsx'
+
 import './index.css'
 
 const router = createBrowserRouter([{
   path: "/",
   element: <Root />,
   errorElement: <RouteError />,
-  loader: rootLoader,
-  id: "root",
   children: [
     {
       errorElement: <RouteError />,

@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router-dom'
 import styles from './checkout.module.css'
 function Checkout() {
-    const [cart, setCart] = useOutletContext();
+    const{cart:[cart, setCart]} = useOutletContext();
 
 
     function getTotal() {
