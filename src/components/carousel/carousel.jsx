@@ -13,7 +13,7 @@ useEffect(() =>{
        { featuredItems.map((elem,i) => {
         
 
-       return <Link to={`/product/${elem.productID}`}><div className={styles.slide + " " + styles.fade + " " + (i === currentSelectedIndex ? styles.show : "not shown")} key={elem.productID}>
+       return <Link key={elem.productID} to={`/product/${elem.productID}`}><div className={styles.slide + " " + styles.fade + " " + (i === currentSelectedIndex ? styles.show : "not shown")}>
         <img className={styles.slideImage} src={elem.imagesrc}/>
         <div className={styles.slideCaption}>{elem.title}</div>
        </div></Link>
