@@ -7,7 +7,6 @@ import { useRouteLoaderData } from "react-router-dom";
 
 function Products(){
     
-    // const {products} = useRouteLoaderData("root");
     const {
        products
      } = useOutletContext();

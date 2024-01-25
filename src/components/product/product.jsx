@@ -4,7 +4,6 @@ import styles from "./product.module.css";
 import productPlaceHolder from "./logo_placeholder.jpg";
 
 function Product() {
-  // const {products} = useRouteLoaderData("root");
   const {
     cart: [cart,setCart],
     products
