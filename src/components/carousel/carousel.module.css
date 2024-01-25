@@ -31,14 +31,14 @@
 }
 
 
-.slidePrev {
+.slidePrev, .slideNext{
     cursor: pointer;
     position: absolute;
     top: 50%;
     width: auto;
     margin-top: -22px;
     padding: 16px;
-    color: rgb(219, 0, 0);
+    color: black;
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
@@ -46,20 +46,7 @@
     user-select: none;
 }
 
-.slideNext {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: rgb(219, 0, 0);
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
+
 
 .slideNext {
     right: 0;
