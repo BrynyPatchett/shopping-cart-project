@@ -45,10 +45,14 @@
 }
 
 .remove{
-    color: grey;
+    display: flex;
+align-items: center;    color: grey;
     align-self: center;
     cursor: pointer;
-    font-size: 1.4rem;
+    >img{
+    max-width: 20px;
+    max-height: 20px;
+    }
 }
 
 .empty{

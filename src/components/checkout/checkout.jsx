@@ -1,5 +1,6 @@
 import { useOutletContext } from 'react-router-dom'
 import styles from './checkout.module.css'
+import removeIcon from './removeIcon.svg'
 function Checkout() {
     const{cart:[cart, setCart]} = useOutletContext();
 
@@ -26,7 +27,7 @@ function Checkout() {
                             <div className={styles.itemTitle}>{elem.product.title}</div>
                             <div className={styles.itemPrice}>{elem.product.price}</div>
                             <div className={styles.itemCount}>{elem.itemCount}</div>
-                            <div className={styles.remove} onClick={() => removeFromCart(elem)}>x</div>
+                            <div className={styles.remove} onClick={() => removeFromCart(elem)}><img src={removeIcon}/></div>
                         </div>
                     })
                 }
