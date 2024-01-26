@@ -45,9 +45,12 @@
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
-    border-radius: 30px;
-    background-color: white;
+    
+    background-color: rgba(238, 234, 234, 0);
     user-select: none;
+    @media (max-height:768px) {
+        text-shadow: 2px 2px 20px white;
+    }
 }
 
 
@@ -55,11 +58,10 @@
 .slideNext {
     margin-right: 16px;
     right: 0;
-    border-radius: 30px;
+
 }
 .slidePrev {
     margin-left: 16px;
-    border-radius: 30px;
 }
 
 .prev:hover, .next:hover {
