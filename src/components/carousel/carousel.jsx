@@ -6,7 +6,7 @@ import styles from './carousel.module.css'
 function Carousel({featuredItems}){
 const [currentSelectedIndex,setCurrentSelectedIndex] = useState(0);
 useEffect(() =>{
-    console.log(`Current Selected Index: ${currentSelectedIndex}`)
+    // console.log(`Current Selected Index: ${currentSelectedIndex}`)
 },[currentSelectedIndex])
 
     return(<div className={styles.carousel}>

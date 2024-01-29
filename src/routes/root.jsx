@@ -14,7 +14,7 @@ function Root() {
   const [cart,setCart] = useState([]);
 
   useEffect(()=>{
-    console.log(cart);
+    // console.log(cart);
   },[cart])
 
 
@@ -33,7 +33,7 @@ function Root() {
             imagesrc:elem.image,
           }
         ))
-        console.log(products);
+        // console.log(products);
         setData(products);
       } catch (err) {
         setError(true);
