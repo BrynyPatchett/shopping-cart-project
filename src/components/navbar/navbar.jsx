@@ -23,7 +23,8 @@ function Navbar({ navlinks, cart }) {
     document.addEventListener("mousedown",handler);
   })
 
-
+  let cartNumber = cart.reduce((total, item) => total + item.itemCount, 0);
+  
 
 
   return (
@@ -60,7 +61,7 @@ function Navbar({ navlinks, cart }) {
             })}
         </div>
         <div className={styles.cart}>
-          <div className={styles.cartContainer}><img className={styles.shoppingCart} src={shoppingCart}/><p className={cart.length > 0 ? "" : styles.noItems}>{cart.reduce((total, item) => total + item.itemCount, 0)}</p></div>
+          <div className={styles.cartContainer}><img className={styles.shoppingCart} src={shoppingCart}/><p className={cart.length > 0 ? "" : styles.noItems}>{cartNumber > 99 ? '99+' : cartNumber}</p></div>
           <div className={styles.cartNav}>
             <div className={styles.cartNavList}>{
                 cart.map((elem)=>{
