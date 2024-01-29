@@ -38,6 +38,8 @@ function Product() {
       order.itemCount = order.itemCount + itemCount;
       setCart(updateCart);
     }
+    //reset the current amount to one
+    setItemCount(1);
   }
 
   return (
