@@ -16,7 +16,7 @@ function Navbar({ navlinks, cart }) {
 
   useEffect(()=>{
     let handler = (e)=>{
-        if(!menuRef.current.contains(e.target)){
+        if(menuRef.current && !menuRef.current.contains(e.target)){
          setOpen(false)
         }
     }
