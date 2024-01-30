@@ -11,43 +11,11 @@ import Product from "../components/product/product";
 import Checkout from "../components/checkout/checkout";
 import Carousel from "../components/carousel/carousel";
 import { describe, expect } from "vitest";
+import rootDef from "./rootDef";
 
 
-const router = createBrowserRouter([{
-  path: "/",
-  element: <Root />,
-  errorElement: <RouteError />,
-  children: [
-    {
-      errorElement: <RouteError />,
-      children: [
-        {
-          path: "/",
-          element: <Homepage />,
 
-        },
-        {
-          path: "products",
-          element: <Products />
-        },
-        {
-          path: "product/:productID",
-          element: <Product />,
-          errorElement: <p>Sorry, this product does not exist.</p>
-        },
-        {
-          path: "checkout",
-          element: <Checkout />
-        },
-        {
-          path: "*",
-          element: <RouteError />
-        }
-      ]
-    }
-
-  ]
-},],)
+const router = createBrowserRouter(rootDef)
 
 describe(
   "Root component loading", () => {
@@ -73,7 +41,7 @@ describe(
   "Root component loading loads api and displayes on main page", () => {
     it("renders Loading Component", async () => {
       const user = userEvent.setup()
-      render(<MemoryRouter >
+      const main = render(<MemoryRouter >
         <Routes>
           <Route element={<Root />}>
           <Route path="/" element={<Homepage/>} />
@@ -82,12 +50,13 @@ describe(
           </Route>
         </Routes>
       </MemoryRouter>);
-      await waitFor(() => expect(screen.getByText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops")).toBeInTheDocument(), {
+
+      await waitFor(() => expect(main.getByText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops")).toBeInTheDocument(), {
         timeout: 2000,
       });
      ;
-      await user.click(screen.getByText("Products"))
-      await user.click(screen.getByText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"))
-      screen.debug()
+      await user.click(main.getByText("Products"))
+      await user.click(main.getByText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"))
+      main.debug()
     });
   });
