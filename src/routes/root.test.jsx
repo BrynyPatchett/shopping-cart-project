@@ -78,6 +78,7 @@ describe(
           <Route element={<Root />}>
           <Route path="/" element={<Homepage/>} />
           <Route path="/products" element={<Products/>} />
+          <Route path="/product/:productID" element={<Product/>} />
           </Route>
         </Routes>
       </MemoryRouter>);
@@ -85,8 +86,8 @@ describe(
         timeout: 2000,
       });
      ;
-
-      screen.debug()
       await user.click(screen.getByText("Products"))
+      await user.click(screen.getByText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"))
+      screen.debug()
     });
   });
