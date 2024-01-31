@@ -25,7 +25,6 @@ const rootDef = [{
           {
             path: "product/:productID",
             element:<Product/>,
-            errorElement: <p>Sorry, this product does not exist.</p>
           },
           {
               path: "checkout",

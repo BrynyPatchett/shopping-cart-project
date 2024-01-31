@@ -1,23 +1,18 @@
 import {
-  findByText,
-  getByText,
   render,
   screen,
   waitFor,
-  rerender,
-  waitForElementToBeRemoved,
 } from "@testing-library/react";
 import React from "react";
 import Root from "./root";
 import { http, HttpResponse } from "msw";
 import "@testing-library/jest-dom";
-import { UserEvent, userEvent } from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import {
   MemoryRouter,
   Route,
   Routes,
 } from "react-router-dom";
-import RouteError from "../routeError";
 import Homepage from "../components/homepage/homepage";
 import { describe, expect } from "vitest";
 import { setupServer } from "msw/node";
@@ -173,7 +168,6 @@ describe("Rendering Routes", () => {
     await user.click(screen.getByText("Add to Cart"));
     await user.click(screen.getByText("Checkout"));
     expect(screen.getByText("Total: $109.95")).toBeInTheDocument();
-    screen.debug()
   });
 
 
@@ -183,7 +177,7 @@ describe("Rendering Routes", () => {
     await waitFor(() => expect (render(
           <MemoryRouter initialEntries={["/product/4"]}>
             <Routes>
-              <Route element={<Root />} errorElement={<RouteError/>}>
+              <Route element={<Root />}>
               <Route  path="/" ></Route>
               <Route path="/product/:productID" element={<Product/> } />
               </Route>
@@ -195,34 +189,6 @@ describe("Rendering Routes", () => {
         );
   });
   
-  it("Renders Error message on API 404", async () => {
-    server.use(
-      http.get("https://fakestoreapi.com/products", () => {
-        // Simulate a successful response with mock data
-        return HttpResponse("Not found", {
-          status: 404,
-          headers: {
-            "Content-Type": "text/plain",
-          },
-        });
-      })
-    );
-    render(
-      <MemoryRouter>
-        <Routes>
-          <Route element={<Root />}>
-            <Route path="/" />
-          </Route>
-        </Routes>
-      </MemoryRouter>
-    );
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
-    await waitFor(() =>
-      expect(
-        screen.getByText("Error Loading data from API, please try again later")
-      ).toBeInTheDocument()
-    );
-  });
 
 
   it("Renders Error message on API 404", async () => {
