@@ -13,7 +13,6 @@ import { http, HttpResponse } from "msw";
 import "@testing-library/jest-dom";
 import { UserEvent, userEvent } from "@testing-library/user-event";
 import {
-  Link,
   MemoryRouter,
   Route,
   Routes,
@@ -85,7 +84,7 @@ describe("Rendering Routes", () => {
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
-  it("Loading Component removed and API data Rendered (Homepage)", async () => {
+  it("API on (Homepage)", async () => {
     render(
       <MemoryRouter>
         <Routes>
@@ -108,7 +107,7 @@ describe("Rendering Routes", () => {
     );
   });
 
-  it("Renders Loading Component and API data (Products Page)", async () => {
+  it("API data  on (Products Page)", async () => {
     render(
       <MemoryRouter initialEntries={["/products"]}>
         <Routes>
@@ -131,7 +130,7 @@ describe("Rendering Routes", () => {
     );
   });
 
-  it("Renders Loading Component and API data (Product/:ProductID Page)", async () => {
+  it("API data on (Product/:ProductID Page)", async () => {
     render(
       <MemoryRouter initialEntries={["/product/1"]}>
         <Routes>
@@ -150,6 +149,35 @@ describe("Rendering Routes", () => {
       ).toBeInTheDocument()
     );
   });
+
+  it("API data (Product/:ProductID Page) and Item visble on checkout page", async () => {
+    const user = userEvent.setup()
+    render(
+      <MemoryRouter initialEntries={["/product/1"]}>
+        <Routes>
+          <Route element={<Root />}>
+            <Route path="/product/:productID" element={<Product />} />
+            <Route path="/Checkout" element={<Checkout />} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.getByText(
+          "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday"
+        )
+      ).toBeInTheDocument()
+    );
+    await user.click(screen.getByText("Add to Cart"));
+    await user.click(screen.getByText("Checkout"));
+    expect(screen.getByText("Total: $109.95")).toBeInTheDocument();
+    screen.debug()
+  });
+
+
+//BAD PATHS //
 
   it("Renders Loading Component and API data (Bad Product)", async () => {
     await waitFor(() => expect (render(
@@ -197,7 +225,6 @@ describe("Rendering Routes", () => {
   });
 
 
-  //BAD PATHS
   it("Renders Error message on API 404", async () => {
     server.use(
       http.get("https://fakestoreapi.com/products", () => {
