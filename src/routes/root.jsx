@@ -37,7 +37,7 @@ function Root() {
         setData(products);
       } catch (err) {
         setError(true);
-        throw new Error(err.message)
+        
       }
     }
 

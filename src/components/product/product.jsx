@@ -14,7 +14,7 @@ function Product() {
 
   const product = products[0].find((elem) => (elem.productID === Number(productID)));
   if (product === undefined) {
-    throw new Error("Sorry this product does not exist");
+    return (<p>Sorry this product does not exist</p>)
   }
 
 
