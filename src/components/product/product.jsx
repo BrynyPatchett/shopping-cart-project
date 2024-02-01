@@ -8,9 +8,11 @@ function Product() {
     cart: [cart,setCart],
     products
   } = useOutletContext();
+
   const [itemCount, setItemCount] = useState(1);
 
   let { productID } = useParams();
+
 
   const product = products[0].find((elem) => (elem.productID === Number(productID)));
   if (product === undefined) {
