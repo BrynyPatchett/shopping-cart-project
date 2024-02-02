@@ -13,10 +13,6 @@ function Root() {
   const [error,setError] = useState(false);
   const [cart,setCart] = useState([]);
 
-  useEffect(()=>{
-    // console.log(cart);
-  },[cart])
-
 
   useEffect(()=>{
     async function getProductsData() {
@@ -33,7 +29,6 @@ function Root() {
             imagesrc:elem.image,
           }
         ))
-        // console.log(products);
         setData(products);
       } catch (err) {
         setError(true);
