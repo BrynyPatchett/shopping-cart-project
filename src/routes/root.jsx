@@ -11,7 +11,17 @@ function Root() {
 
   const [data,setData] = useState();
   const [error,setError] = useState(false);
-  const [cart,setCart] = useState([]);
+
+  let initCart = JSON.parse(localStorage.getItem('cart'));
+  if(!initCart){
+    initCart = [];
+  }
+
+  const [cart,setCart] = useState(initCart);
+
+  useEffect(()=>{
+    localStorage.setItem('cart',JSON.stringify(cart));
+  },[cart])
 
 
   useEffect(()=>{

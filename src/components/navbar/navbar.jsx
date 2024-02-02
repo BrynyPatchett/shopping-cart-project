@@ -25,8 +25,6 @@ function Navbar({ navlinks, cart }) {
 
   let cartNumber = cart.reduce((total, item) => total + item.itemCount, 0);
   
-
-
   return (
     <nav className={styles.navbar}>
       <div className={styles.imageContainer}>
