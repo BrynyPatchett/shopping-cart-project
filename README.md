@@ -18,4 +18,4 @@ SPA will pass  the required information between all components and routes with t
 
 ## Testing
 Routes and Compontents have been tested using the [React-Testing Library.](https://testing-library.com/).
-Fetch requests have been mocked using Mock [Service Worker(MSW)](https://mswjs.io/). 
+Fetch requests have been mocked using [Mock Service Worker(MSW)](https://mswjs.io/). 
