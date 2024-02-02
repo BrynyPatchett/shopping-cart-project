@@ -17,5 +17,5 @@ Once the initial data is fetched from the following API: [FakeStoreAPI](https://
 SPA will pass  the required information between all components and routes with the use of Outlets, Outlet Context and URL params. Moving between routes does not call the API again.
 
 ## Testing
-Routes and Compontents have been tested using the [React-Testing Library.](https://testing-library.com/).
+Routes and Compontents have been tested using the [React-Testing Library](https://testing-library.com/),
 Fetch requests have been mocked using [Mock Service Worker(MSW)](https://mswjs.io/). 
