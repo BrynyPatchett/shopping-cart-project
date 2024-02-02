@@ -3,7 +3,6 @@ import '@testing-library/jest-dom';
 import { describe, expect, vi } from "vitest"
 import { useOutletContext,BrowserRouter} from "react-router-dom";
 import Products from '../products/products';
-import Product from '../product/product';
 import {
     render,
     screen,

@@ -10,9 +10,9 @@ import {
 } from "@testing-library/react";
 
 let setCart;
-let x = [];
+let cart = [];
 setCart = function(args){
-     x = args;
+     cart = args;
 }
 
 
@@ -38,7 +38,7 @@ vi.mock("react-router-dom", async (importOriginal) => {
               ],
               []
             ],
-             cart: [x,setCart]
+             cart: [cart,setCart]
         });
             vi.mocked(useParams).mockReturnValueOnce({productID: '0'});
     
@@ -49,6 +49,8 @@ describe("Product Render", () => {
     })
 
     vi.mocked(useParams).mockReturnValue({productID: '1'});
+
+
     it("Render Product information",  () => {
         render(<Product/>,{wrapper:BrowserRouter})
         expect(screen.getByText("Test"));
@@ -82,8 +84,12 @@ describe("Product Render", () => {
         const user = userEvent.setup()
         render(<Product/>,{wrapper:BrowserRouter})
         await user.click(screen.getByText("Add to Cart"));
-        expect(x[0].itemCount).toBe(1);
+        expect(cart[0].itemCount).toBe(1);
     })
+
+
+
+
     it("Items added to cart",  async () => {
 
         const user = userEvent.setup()
@@ -91,8 +97,43 @@ describe("Product Render", () => {
         await user.click(screen.getByText("+"));
         await user.click(screen.getByText("+"));
         await user.click(screen.getByText("Add to Cart"));
-        expect(x[0].itemCount).toBe(3);
+        expect(cart[0].itemCount).toBe(3);
     })
-})
 
 
+
+
+    it("Add to cart updates count of same item in cart", async ()=>{
+        cart = [
+            {
+              product: {
+                productID: 1
+              },
+              itemCount: 3
+            }
+          ]
+        vi.mocked(useOutletContext).mockReturnValue({ products: 
+            [
+              [
+                {
+                  productID: 1,
+                  title: 'Test',
+                  price: 109.95,
+                  description: 'Test Description',
+                  imagesrc: 'testImage',
+                },
+              ],
+              []
+            ],
+             cart: [cart,setCart]
+        });
+    const user = userEvent.setup()
+    render(<Product/>,{wrapper:BrowserRouter})
+    await user.click(screen.getByText("+"));
+    await user.click(screen.getByText("+"));
+    await user.click(screen.getByText("Add to Cart"));
+    expect(cart[0].itemCount).toBe(6);
+    await user.click(screen.getByText("Add to Cart"));
+    await user.click(screen.getByText("Add to Cart"));
+    expect(cart[0].itemCount).toBe(8);
+})});

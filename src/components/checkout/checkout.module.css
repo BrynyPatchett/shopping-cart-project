@@ -45,13 +45,13 @@
 }
 
 .remove{
-    display: flex;
-align-items: center;    color: grey;
-    align-self: center;
+    display: contents;
     cursor: pointer;
     >img{
     max-width: 20px;
     max-height: 20px;
+    align-items: center;    
+    align-self: center;
     }
 }
 

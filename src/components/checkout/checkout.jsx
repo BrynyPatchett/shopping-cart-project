@@ -27,7 +27,7 @@ function Checkout() {
                             <div className={styles.itemTitle}>{elem.product.title}</div>
                             <div className={styles.itemPrice}>{elem.product.price}</div>
                             <div className={styles.itemCount}>{elem.itemCount}</div>
-                            <div className={styles.remove} onClick={() => removeFromCart(elem)}><img src={removeIcon}/></div>
+                            <button className={styles.remove} onClick={() => removeFromCart(elem)}><img src={removeIcon}/></button>
                         </div>
                     })
                 }

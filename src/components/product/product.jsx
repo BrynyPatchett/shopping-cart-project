@@ -33,7 +33,6 @@ function Product() {
   function updateCart() {
     const updateCart = [...cart];
     const order = updateCart.find(cItem => cItem.product.productID === product.productID);
-    // console.log(order)
     if (order === undefined) {
       setCart([...cart, { product, itemCount }])
     } else {
